@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello Discuss!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css ") %>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+</head>
+
+<body>
+    <navbar class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">Discussion</a>
+            <button class="button navbar-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+        </div>
+    </navbar>
+
+    <div class="container">
+        <%= if get_flash(@conn, :info) do %>
+            <div class="notification is-info">
+                <%= get_flash(@conn, :info) %>
+            </div>
+            <% end %>
+                <%= if get_flash(@conn, :error) do %>
+                    <div class="notification is-error">
+    
+                        <%= get_flash(@conn, :error) %>
+                    </div>
+                    <% end %>
+                        <main class="box has-text-centered" role="main">
+                            <%= render @view_module, @view_template, assigns %>
+                        </main>
+    </div>
+    <script src="<%= static_path(@conn, "/js/app.js ")%>"></script>
+</body>
+
+</html>

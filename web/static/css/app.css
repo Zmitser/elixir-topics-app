@@ -1,0 +1,8 @@
+.help-block {
+    text-transform: capitalize;
+    color: red;
+}
+
+a.button {
+    text-decoration: none;
+}

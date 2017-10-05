@@ -1,0 +1,40 @@
+<div class="content">
+    <h2>Topics</h2>
+    <div class="columns field">
+        <%= link to: topic_path(@conn, :new), class: "button is-success" do %>
+            <span class="icon">
+<i class="fa fa-plus"></i>
+</span>
+            <span>Add Topic</span>
+            <% end %>
+    </div>
+    <table class="table is-bordered is-striped is-narrow is-fullwidth">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= for topic <- @topics do %>
+                <tr>
+                    <td>
+                        <%= topic.title %>
+                    </td>
+                    <td>
+                    <div class="field is-grouped">
+                       <%= link to: topic_path(@conn, :edit, topic), class: "button is-warning is-small" do %>
+                            <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                            <span>Edit</span>
+                            <% end %>
+                       <%= link to: topic_path(@conn, :delete, topic), method: :delete,  class: "button is-danger is-small"  do %>
+                            <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                            <span>Delete</span>
+                            <% end %>
+                    </td>
+                </div>
+                </tr>
+                <% end %>
+        </tbody>
+    </table>
+</div>

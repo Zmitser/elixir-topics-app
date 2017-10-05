@@ -1,0 +1,13 @@
+<%= form_for @changeset, topic_path(@conn, :update, @topic), fn f -> %>
+<div class="field is-grouped">
+  <div class="control is-expanded">
+    <%= text_input f, :title, placeholder: "Title", class: "input" %>
+    <p class="help is-danger" >
+     <%= error_tag f, :title %>
+    </p>
+  </div>
+  <div class="control">
+    <%= submit "Save Topic",  class: "button is-info"%>
+  </div>
+</div>
+<% end %>

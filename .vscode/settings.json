@@ -1,0 +1,53 @@
+// Place your settings in this file to override the default settings
+{
+  // Editor
+
+  // The number of spaces a tab is equal to.
+  "editor.tabSize": 2,
+  // Controls whether the editor should render whitespace characters
+  "editor.renderWhitespace": "all",
+  // Controls whether the editor should render indent guides
+  "editor.renderIndentGuides": true,
+  
+  // Workbench
+
+  // Controls if opened editors should show in tabs or not.
+  "workbench.editor.showTabs": false,
+  
+  // File Explorer
+
+  // Number of editors shown in the Open Editors pane. Set it to 0 to hide the pane.
+  "explorer.openEditors.visible": 5,
+
+  // Search
+
+  // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the files.exclude setting.
+  "search.exclude": {
+      "**/node_modules": true,
+      "**/jspm_packages": true,
+      "**/bower_components": true
+  },
+
+  // Files
+
+  // Controls auto save of dirty files. Accepted values:  "off", "afterDelay", "onFocusChange" (editor loses focus), "onWindowChange" (window loses focus). If set to "afterDelay", you can configure the delay in "files.autoSaveDelay".
+  "files.autoSave": "onWindowChange",
+
+  // Emmet
+
+  // When enabled, emmet abbreviations are expanded when pressing TAB.
+  "emmet.triggerExpansionOnTab": true,
+
+  // Preferences used to modify behavior of some actions and resolvers of Emmet.
+  "emmet.preferences": {},
+
+  // Define profile for specified syntax or use your own profile with specific rules.
+  "emmet.syntaxProfiles": {
+      "javascript": "html",
+      "typescript": "html"
+  },
+
+  // An array of languages where emmet abbreviations should not be expanded.
+  "emmet.excludeLanguages": [],
+  "typescript.check.tscVersion": false
+}
