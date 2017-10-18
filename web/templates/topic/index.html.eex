@@ -8,6 +8,7 @@
             <span>Add Topic</span>
             <% end %>
     </div>
+     <%= if @conn.assigns.user do %>
     <table class="table is-bordered is-striped is-narrow is-fullwidth">
         <thead>
             <tr>
@@ -17,12 +18,14 @@
         </thead>
         <tbody>
             <%= for topic <- @topics do %>
+             <%= if @conn.assigns.user &&  @conn.assigns.user.id == topic.user_id do %>
                 <tr>
                     <td>
-                        <%= topic.title %>
+                        <%= link topic.title, to: topic_path(@conn, :show, topic)  %>
                     </td>
                     <td>
                     <div class="field is-grouped">
+                   
                        <%= link to: topic_path(@conn, :edit, topic), class: "button is-warning is-small" do %>
                             <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
                             <span>Edit</span>
@@ -31,10 +34,13 @@
                             <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
                             <span>Delete</span>
                             <% end %>
+                  
+                        </div>  
                     </td>
-                </div>
                 </tr>
+                  <% end %>
                 <% end %>
         </tbody>
     </table>
+    <% end %>
 </div>

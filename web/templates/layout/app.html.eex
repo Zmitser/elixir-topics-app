@@ -13,19 +13,36 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css ") %>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-
+    <script>
+    <%= if @conn.assigns.user do %>
+        window.userToken = "<%= Phoenix.Token.sign(Discuss.Endpoint, "key", @conn.assigns.user.id) %>"
+      <% end %>
+    </script>
 </head>
 
 <body>
     <navbar class="navbar is-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">Discussion</a>
-            <button class="button navbar-burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
         </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <p class="control">
+          <%= if @conn.assigns[:user] do %>
+        <%=link "Logout", to: auth_path(@conn, :signout), class: "button is-info"%>
+          <% else %>
+          <%=link to: auth_path(@conn, :request, "github"), class: "button is-info" do %>
+              <span class="icon">
+                <i class="fa fa-github"></i>
+              </span>
+              <span>Sign in with Github</span>
+            <% end %>
+          <% end %>
+          </p>
+        </div>
+      </div>
+      </div>
     </navbar>
 
     <div class="container">
@@ -35,7 +52,7 @@
             </div>
             <% end %>
                 <%= if get_flash(@conn, :error) do %>
-                    <div class="notification is-error">
+                    <div class="notification is-warningccc">
     
                         <%= get_flash(@conn, :error) %>
                     </div>
